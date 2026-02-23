@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonya & Simon — 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FAF7F2;
+            --soft-gold: #C9A96E;
+            --dark: #2C2C2C;
+            --muted: #7A7A7A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 520px;
+            width: 100%;
+        }
+
+        .ornament {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .ornament span { display: inline-block; width: 36px; height: 1px; background: var(--soft-gold); vertical-align: middle; }
+        .ornament .dia { display: inline-block; width: 5px; height: 5px; background: var(--soft-gold); transform: rotate(45deg); margin: 0 10px; vertical-align: middle; }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(3rem, 9vw, 5rem);
+            line-height: 1.05;
+            color: var(--dark);
+        }
+
+        .amp {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-style: italic;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--soft-gold);
+            display: block;
+            margin: 0.2rem 0;
+        }
+
+        .subtitle {
+            font-weight: 300;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            width: 100%;
+            max-width: 360px;
+            padding: 1.3rem 2rem;
+            border: 1px solid rgba(201,169,110,0.35);
+            border-radius: 2px;
+            background: #fff;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            border-color: var(--soft-gold);
+            box-shadow: 0 4px 24px rgba(201,169,110,0.15);
+            transform: translateY(-2px);
+        }
+
+        .btn .flag {
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .btn .text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .btn .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        .btn .detail {
+            font-weight: 300;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-top: 0.15rem;
+        }
+
+        .heart {
+            font-size: 1.2rem;
+            color: var(--soft-gold);
+            margin-top: 3rem;
+        }
+
+        /* ── FADE IN ── */
+        .container { animation: fadeUp 1s ease both; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ornament"><span></span><span class="dia"></span><span></span></div>
+        <h1>Sonya</h1>
+        <span class="amp">&</span>
+        <h1>Simon</h1>
+        <p class="subtitle">Choisissez votre célébration</p>
+
+        <div class="buttons">
+            <a href="madagascar.html" class="btn">
+                <span class="flag">🇲🇬</span>
+                <span class="text">
+                    <span class="title">Vodiondry</span>
+                    <span class="detail">23 mai 2026 · Antananarivo</span>
+                </span>
+            </a>
+            <a href="france.html" class="btn">
+                <span class="flag">🇫🇷</span>
+                <span class="text">
+                    <span class="title">Mariage</span>
+                    <span class="detail">29 août 2026 · Fresnes-sur-Marne</span>
+                </span>
+            </a>
+        </div>
+
+        <p class="heart">♥</p>
+    </div>
+</body>
+</html>

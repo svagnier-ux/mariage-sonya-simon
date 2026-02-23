@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vodiondry — Endrica & Simon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FAF7F2;
+            --soft-gold: #C9A96E;
+            --dark: #2C2C2C;
+            --muted: #7A7A7A;
+            --blush: #E8D5C4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 650px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            text-align: center;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('img/hero-baobab-avenue.jpg') center center / cover no-repeat;
+            filter: brightness(0.85);
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.45) 0%,
+                rgba(0,0,0,0.35) 50%,
+                rgba(0,0,0,0.15) 70%,
+                rgba(250,247,242,0.85) 88%,
+                rgba(250,247,242,1) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-bottom: 3rem;
+        }
+
+        .hero-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+
+        .hero-tag-mg {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
+            color: rgba(255,255,255,0.8);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(3rem, 9vw, 5.5rem);
+            line-height: 1.05;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+        }
+
+        .hero .amp {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-style: italic;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--soft-gold);
+            display: block;
+            margin: 0.2rem 0;
+        }
+
+        .hero-date {
+            font-weight: 300;
+            font-size: 0.8rem;
+            letter-spacing: 0.5em;
+            color: rgba(255,255,255,0.9);
+            margin-top: 1.5rem;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-venue {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: #fff;
+            margin-top: 0.4rem;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            width: 1px;
+            height: 35px;
+            background: linear-gradient(to bottom, var(--soft-gold), transparent);
+            animation: fade-pulse 2.5s ease-in-out infinite;
+        }
+        @keyframes fade-pulse { 0%,100%{opacity:.25} 50%{opacity:1} }
+
+        /* ── SHARED ── */
+        section { max-width: 780px; margin: 0 auto; padding: 5rem 2rem; }
+
+        .ornament {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .ornament span { display: inline-block; width: 36px; height: 1px; background: var(--soft-gold); vertical-align: middle; }
+        .ornament .dia { display: inline-block; width: 5px; height: 5px; background: var(--soft-gold); transform: rotate(45deg); margin: 0 10px; vertical-align: middle; }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            text-align: center;
+            margin-bottom: 0.4rem;
+        }
+
+        .sub-mg {
+            font-weight: 300;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: var(--muted);
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+        }
+
+        /* ── INVITATION ── */
+        .card {
+            background: #fff;
+            border-radius: 2px;
+            padding: 3.5rem 2.5rem;
+            box-shadow: 0 2px 24px rgba(0,0,0,0.04);
+            text-align: center;
+        }
+
+        .card p.fr {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            line-height: 1.85;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        .card p.mg {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--muted);
+            font-style: italic;
+            max-width: 540px;
+            margin: 1.5rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(201,169,110,0.2);
+        }
+
+        /* ── PHOTOS ── */
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 0 auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .gallery-full { grid-column: 1 / -1; }
+        .gallery-full img { height: 420px; }
+
+        /* ── DATE CARD ── */
+        .date-card {
+            text-align: center;
+            position: relative;
+        }
+
+        .date-card::before, .date-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--soft-gold), transparent);
+            opacity: 0.25;
+        }
+        .date-card::before { left: 0; }
+        .date-card::after { right: 0; }
+
+        .d-label { font-weight: 300; font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+        .d-num { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 5rem; color: var(--soft-gold); line-height: 1; margin: 0.4rem 0; }
+        .d-month { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; letter-spacing: 0.15em; }
+        .d-year { font-weight: 300; font-size: 0.8rem; letter-spacing: 0.5em; color: var(--muted); margin-top: 0.2rem; }
+
+        .venue-block {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(201,169,110,0.2);
+        }
+        .venue-block .name { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.25rem; }
+        .venue-block .addr { font-weight: 300; font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+        .venue-block .mg { font-weight: 300; font-size: 0.65rem; color: var(--muted); font-style: italic; margin-top: 0.4rem; }
+
+        /* ── TIMELINE ── */
+        .tl { position: relative; padding: 0.5rem 0; }
+        .tl::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, var(--soft-gold), transparent); }
+
+        .tl-row { display: flex; align-items: center; margin: 2.2rem 0; position: relative; }
+        .tl-row::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 7px; height: 7px; background: var(--soft-gold); border-radius: 50%; }
+
+        .tl-time { flex: 1; text-align: right; padding-right: 2rem; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.25rem; color: var(--soft-gold); }
+        .tl-evt { flex: 1; padding-left: 2rem; }
+        .tl-evt .fr { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; }
+        .tl-evt .mg { font-weight: 300; font-size: 0.65rem; color: var(--muted); font-style: italic; margin-top: 0.15rem; }
+
+        /* ── FOOTER ── */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            background: linear-gradient(0deg, rgba(201,169,110,0.06) 0%, var(--cream) 100%);
+        }
+        .footer .names { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 2.5rem; }
+        .footer .closing { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--muted); margin-top: 0.8rem; }
+        .footer .closing-mg { font-weight: 300; font-size: 0.65rem; color: var(--muted); font-style: italic; margin-top: 0.4rem; }
+        .footer .heart { font-size: 1.4rem; color: var(--soft-gold); margin-top: 1.2rem; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 600px) {
+            section { padding: 3.5rem 1.2rem; }
+            .card { padding: 2.5rem 1.5rem; }
+            .tl::before { left: 0; }
+            .tl-row { flex-direction: column; align-items: flex-start; margin-left: 1.2rem; }
+            .tl-row::after { left: -1.2rem; transform: none; top: 0.4rem; }
+            .tl-time { text-align: left; padding: 0; margin-bottom: 0.15rem; }
+            .tl-evt { padding-left: 0; }
+            .gallery { grid-template-columns: 1fr; }
+            .gallery img, .gallery-full img { height: 260px; }
+        }
+
+        /* ── FADE IN ── */
+        .fi { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
+        .fi.v { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-tag">Vodiondry</p>
+            <h1>Endrica</h1>
+            <span class="amp">&</span>
+            <h1>Simon</h1>
+            <!-- date & lieu supprimés, redits plus bas -->
+        </div>
+        <div class="scroll-hint"></div>
+    </div>
+
+    <!-- INVITATION -->
+    <section class="fi">
+        <div class="ornament"><span></span><span class="dia"></span><span></span></div>
+        <h2>Invitation</h2>
+        <p class="sub-mg">Fanasana</p>
+        <div class="card">
+            <p class="fr">
+                Les familles Maurice — Todonirina et Vagnier ont le bonheur de vous convier
+                à la célébration du Vodiondry de leurs enfants et seraient honorées
+                de votre présence pour partager ce moment de joie.
+            </p>
+            <p class="mg">
+                Ny fianakaviana Maurice — Todonirina sy Vagnier dia faly manasa anareo
+                ho tonga amin'ny fankalazana ny Vodiondrin'ny zanany,
+                ary ho finaritra tokoa raha hiara-mifaly aminy ianareo.
+            </p>
+        </div>
+    </section>
+
+    <!-- GALLERY 1 -->
+    <section class="fi" style="padding-top:0">
+        <div class="gallery">
+            <div><img src="img/v3-photo3.jpg" alt="Endrica et Simon"></div>
+            <div><img src="img/photo56-web.jpg" alt="Endrica et Simon"></div>
+        </div>
+    </section>
+
+    <!-- DATE & LIEU -->
+    <section class="fi">
+        <div class="ornament"><span></span><span class="dia"></span><span></span></div>
+        <h2>Quand & Où</h2>
+        <p class="sub-mg">Rahoviana sy Aiza</p>
+        <div class="card date-card">
+            <p class="d-label">Samedi / Sabotsy</p>
+            <p class="d-num">23</p>
+            <p class="d-month">Mai / May</p>
+            <p class="d-year">2 0 2 6</p>
+            <div class="venue-block">
+                <p class="name">Akany Soafonenaka</p>
+                <p class="addr">Antananarivo, Madagascar</p>
+                <p class="mg">Azafady, hamarino ny fahatongavanareo alohan'ny 1 May</p>
+                <p class="addr" style="margin-top:0.8rem; font-size:0.85rem;">Merci de confirmer votre présence avant le 1er mai</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMME -->
+    <section class="fi">
+        <div class="ornament"><span></span><span class="dia"></span><span></span></div>
+        <h2>Programme</h2>
+        <p class="sub-mg">Fandaharam-potoana</p>
+        <div class="tl">
+            <div class="tl-row">
+                <div class="tl-time">10h00</div>
+                <div class="tl-evt">
+                    <div class="fr">Cérémonie du Vodiondry</div>
+                    <div class="mg">Fankalazana ny Vodiondry</div>
+                </div>
+            </div>
+            <div class="tl-row">
+                <div class="tl-time">12h00</div>
+                <div class="tl-evt">
+                    <div class="fr">Cocktail</div>
+                    <div class="mg">Fotoam-pisotroana</div>
+                </div>
+            </div>
+            <div class="tl-row">
+                <div class="tl-time">13h30</div>
+                <div class="tl-evt">
+                    <div class="fr">Repas</div>
+                    <div class="mg">Sakafo</div>
+                </div>
+            </div>
+            <div class="tl-row">
+                <div class="tl-time">16h00</div>
+                <div class="tl-evt">
+                    <div class="fr">Fête & Danse</div>
+                    <div class="mg">Lanonana sy Dihy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHOTO LARGE -->
+    <section class="fi" style="padding-top:0">
+        <div class="gallery">
+            <div class="gallery-full">
+                <img src="img/photo71-web.jpg" alt="Endrica et Simon">
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer fi">
+        <p class="names">Endrica & Simon</p>
+        <p class="closing">Nous avons hâte de célébrer ce jour avec vous.</p>
+        <p class="closing-mg">Tsy andrianay ny hiara-mifaly aminareo amin'io andro io.</p>
+        <p class="heart">♥</p>
+    </div>
+
+    <script>
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('v'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+    </script>
+</body>
+</html>
