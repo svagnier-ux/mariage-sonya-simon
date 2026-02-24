@@ -247,16 +247,16 @@
         .venue-block .mg { font-weight: 300; font-size: 0.65rem; color: var(--muted); font-style: italic; margin-top: 0.4rem; }
 
         /* ── TIMELINE ── */
-        .tl { position: relative; padding: 0.5rem 0; }
-        .tl::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, var(--soft-gold), transparent); }
+        .tl { display: flex; flex-direction: column; align-items: center; padding: 0.5rem 0; }
 
-        .tl-row { display: flex; align-items: center; margin: 2.2rem 0; position: relative; }
-        .tl-row::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 7px; height: 7px; background: var(--soft-gold); border-radius: 50%; }
+        .tl-row { text-align: center; margin: 0.5rem 0; }
 
-        .tl-time { flex: 1; text-align: right; padding-right: 2rem; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.25rem; color: var(--soft-gold); }
-        .tl-evt { flex: 1; padding-left: 2rem; }
+        .tl-time { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.4rem; color: var(--soft-gold); margin-bottom: 0.3rem; }
         .tl-evt .fr { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; }
         .tl-evt .mg { font-weight: 300; font-size: 0.65rem; color: var(--muted); font-style: italic; margin-top: 0.15rem; }
+
+        .tl-dot { width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--soft-gold), transparent); margin: 0.8rem auto; position: relative; }
+        .tl-dot::after { content: ''; position: absolute; bottom: -3px; left: 50%; transform: translateX(-50%); width: 7px; height: 7px; background: var(--soft-gold); border-radius: 50%; }
 
         /* ── FOOTER ── */
         .footer {
@@ -273,11 +273,8 @@
         @media (max-width: 600px) {
             section { padding: 3.5rem 1.2rem; }
             .card { padding: 2.5rem 1.5rem; }
-            .tl::before { left: 0; }
-            .tl-row { flex-direction: column; align-items: flex-start; margin-left: 1.2rem; }
-            .tl-row::after { left: -1.2rem; transform: none; top: 0.4rem; }
-            .tl-time { text-align: left; padding: 0; margin-bottom: 0.15rem; }
-            .tl-evt { padding-left: 0; }
+            .tl-time { font-size: 1.2rem; }
+            .tl-evt .fr { font-size: 1.05rem; }
             .gallery { grid-template-columns: 1fr; }
             .gallery img, .gallery-full img { height: 260px; }
         }
@@ -362,6 +359,7 @@
                     <div class="mg">Fankalazana ny Vodiondry</div>
                 </div>
             </div>
+            <div class="tl-dot"></div>
             <div class="tl-row">
                 <div class="tl-time">12h00</div>
                 <div class="tl-evt">
@@ -369,6 +367,7 @@
                     <div class="mg">Fotoam-pisotroana</div>
                 </div>
             </div>
+            <div class="tl-dot"></div>
             <div class="tl-row">
                 <div class="tl-time">13h30</div>
                 <div class="tl-evt">
@@ -376,6 +375,7 @@
                     <div class="mg">Sakafo</div>
                 </div>
             </div>
+            <div class="tl-dot"></div>
             <div class="tl-row">
                 <div class="tl-time">16h00</div>
                 <div class="tl-evt">
